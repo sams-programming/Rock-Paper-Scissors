@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    
+    <div class="gamebox">
+        <div class="computerBox">
+            <h1 class="playerTitle">Computer : Score <span id="computerScore">0</span></h1>
+            <h3 class="playerMessage">Waiting for player</h3>
+            <div class="option">
+                <button type="button"  id="computerChoice" class="playerChoiceButton">🗿</button>
+            </div>
+        </div>
+        <div class="playerBox">
+            <h1 class="playerTitle">Player : Score <span id="playerScore">0</span></h1>
+            <h3 class="playerMessage" id="playerMsg">Please pick a Move</h3>
+            <div class="option" id="playerOption">
+                <button type="button" value="rock" class="playerChoiceButton">🗿</button>
+                <button type="button" value="paper" class="playerChoiceButton">📝</button>
+                <button type="button" value="scissors" class="playerChoiceButton">✂️</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    
+    var playerChoiceButtons = document.getElementById("playerOption");
+    playerChoiceButtons.addEventListener("click", function (element) {
+        var playerChoice = element.target.value;
+        var computerScore = document.getElementById("playerScore");
+        var computerChoiceButton = document.getElementById("computerChoice")
+        var computerOption = ["rock","paper", "scissors"];
+        var computerChoice = computerOption[Math.floor(Math.random() * computerOption.length)]
+        var computerScore = document.getElementById("computerScore");
+
+
+
+        switch (computerChoice) {
+            case "rock": computerChoiceButton.innerHTML = "🗿"; break;
+            case "paper": computerChoiceButton.innerHTML = "📝"; break;
+            case "scissors": computerChoiceButton.innerHTML = "✂️"; break;
+            default:
+                alert("Error detected, please refreash the page")
+                break;
+        }
+
+        if (playerChoice == computerChoice) {
+            document.getElementById("playerMsg").innerHTML = "You both choose the same thing, it's a tie"; 
+        }
+
+        if (playerChoice == "rock" && computerChoice == "scissors") {
+            document.getElementById("playerMsg").innerHTML = "Rock beat scissors !!! You Won"; 
+            playerScore.innerHTML = 1 + parseInt(playerScore.innerHTML);
+        }
+        else if (computerChoice == "rock" && playerChoice == "scissors") {
+            document.getElementById("playerMsg").innerHTML = "Rock beat scissors, You lost, try again"; 
+            computerScore.innerHTML = 1 + parseInt(computerScore.innerHTML);
+        }
+
+        if (playerChoice == "scissors" && computerChoice == "paper") {
+            document.getElementById("playerMsg").innerHTML = "Scissors beat paper !!! You Won"; 
+            playerScore.innerHTML = 1 + parseInt(playerScore.innerHTML);
+        }
+        else if (computerChoice == "scissors" && playerChoice == "paper") {
+            document.getElementById("playerMsg").innerHTML = "Scissors beat paper, You lost, try again"; 
+            computerScore.innerHTML = 1 + parseInt(computerScore.innerHTML);
+        }
+
+        if (playerChoice == "paper" && computerChoice == "rock") {
+            document.getElementById("playerMsg").innerHTML = "Paper beat rock !!! You Won"; 
+            playerScore.innerHTML = 1 + parseInt(playerScore.innerHTML);
+        }
+        else if (computerChoice == "paper" && playerChoice == "rock") {
+            document.getElementById("playerMsg").innerHTML = "Paper beat rock, You lost, try again"; 
+            computerScore.innerHTML = 1 + parseInt(computerScore.innerHTML);
+        }
+
+    })
+
+</script>
+
+
+<style>
+    body {
+        color: white;
+        background: #636e72;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    .playerTitle {
+        padding-top: 1%;
+    }
+
+    .playerMessage, .playerTitle {
+        text-align: center;
+    }
+
+    .option {
+        display: flex;
+        justify-content: center;
+    }
+
+    .gamebox {
+        width: 50%;
+        height: 50%;
+        margin: 0 auto;
+        margin-top: 5%;
+        background: black;
+    }
+
+    .playerChoiceButton {
+        width: 70px;
+        height: 70px;
+        font-size: 42px;
+    }
+
+    .computerBox, .playerBox {
+        height: 50%;
+        width: 100%;
+        background: #d63031;
+    }
+
+    .playerBox {
+        background: #0984e3 !important;
+    }
+
+
+</style>
+</body>
+</html>
