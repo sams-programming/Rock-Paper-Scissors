@@ -1,0 +1,4 @@
+darkgrey=#636e72
+red=#d63031
+blue=#0984e3
+font='Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
